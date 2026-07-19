@@ -1,13 +1,20 @@
 from google import genai
+from dotenv import load_dotenv
+import os
 
-from src.config import GOOGLE_API_KEY
-from src.config import MODEL
+load_dotenv()
 
-client = genai.Client(api_key=GOOGLE_API_KEY)
+client = genai.Client(
+    api_key=os.getenv("GOOGLE_API_KEY")
+)
+
+MODEL = os.getenv(
+    "GEMINI_MODEL",
+    "gemini-2.5-flash"
+)
 
 
-def ask_gemini(prompt):
-
+def generate_response(prompt: str) -> str:
     response = client.models.generate_content(
         model=MODEL,
         contents=prompt
