@@ -24,3 +24,27 @@ Question:
 
 Answer:
 """
+
+
+
+CLASSIFIER_PROMPT = """
+You are an enterprise query classifier.
+
+Your task is to classify the user's question into exactly ONE of the following departments:
+
+- HR
+- Finance
+- IT
+- General
+
+Rules:
+- Return ONLY the department name.
+- Do not explain your answer.
+- Do not add punctuation.
+- If unsure, return General.
+
+Question:
+{question}
+
+Department:
+"""
