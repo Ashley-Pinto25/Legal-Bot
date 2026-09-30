@@ -1,9 +1,6 @@
-from src.graph import graph
+"""Manual graph smoke test; safe to import during pytest collection."""
+from src.graph import legal_graph
 
-result = graph.invoke(
-    {
-        "question": "My salary is delayed."
-    }
-)
 
-print(result)
+if __name__ == "__main__":
+    print(legal_graph.invoke({"question": "My landlord has not returned my deposit."}))

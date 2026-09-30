@@ -1,0 +1,20 @@
+[
+  {
+    "title": "India Code",
+    "source_type": "official legislation portal",
+    "source_url": "https://www.indiacode.nic.in/",
+    "last_verified": "2026-09-30"
+  },
+  {
+    "title": "Legislative Department, Ministry of Law and Justice",
+    "source_type": "official government source",
+    "source_url": "https://legislative.gov.in/",
+    "last_verified": "2026-09-30"
+  },
+  {
+    "title": "National Legal Services Authority",
+    "source_type": "official legal services source",
+    "source_url": "https://nalsa.gov.in/",
+    "last_verified": "2026-09-30"
+  }
+]

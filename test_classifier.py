@@ -1,12 +1,10 @@
-from src.classifier import classify_department
+"""Manual classifier explorer; safe to import during pytest collection."""
+from src.classifier import classify_legal_domains
 
-while True:
 
-    question = input("\nQuestion: ")
-
-    if question.lower() == "exit":
-        break
-
-    department = classify_department(question)
-
-    print(f"\nDepartment: {department}")
+if __name__ == "__main__":
+    while True:
+        question = input("\nDescribe a legal situation (or 'exit'): ").strip()
+        if question.lower() == "exit":
+            break
+        print(classify_legal_domains(question))

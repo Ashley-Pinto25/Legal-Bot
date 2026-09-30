@@ -1,45 +1,16 @@
-/* Main App */
-.stApp {
-    background-color: #0E1117;
-    color: white;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap');
 
-/* Chat container */
-.block-container {
-    max-width: 900px;
-    margin: auto;
-    padding-top: 2rem;
-}
-
-/* Title */
-.chat-title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-}
-
-/* User Bubble */
-.user-msg {
-    background: linear-gradient(135deg,#1F6FEB,#2563EB);
-    color: white;
-    padding: 12px 18px;
-    border-radius: 18px 18px 4px 18px;
-    width: fit-content;
-    max-width: 70%;
-    margin-left: auto;
-    margin-bottom: 12px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,.3);
-}
-
-/* Assistant Bubble */
-.bot-msg {
-    background: #2D2D2D;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 18px 18px 18px 4px;
-    width: fit-content;
-    max-width: 70%;
-    margin-bottom: 12px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,.3);
-}
+.stApp { background: #f7f7f4; color: #18241e; font-family: 'DM Sans', sans-serif; }
+[data-testid="stSidebar"] { background: #11291f; }
+[data-testid="stSidebar"] * { color: #edf3ec; }
+.block-container { max-width: 920px; padding-top: 3.1rem; padding-bottom: 7rem; }
+h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif; color: #193326; }
+h1 { margin-bottom: .1rem; }
+.eyebrow { color: #6a7c70; font-size: .73rem; font-weight: 700; letter-spacing: .13em; }
+[data-testid="stChatMessage"] { background: #ffffff; border: 1px solid #e0e7df; border-radius: 12px; padding: .4rem .8rem; margin: .8rem 0; }
+[data-testid="stChatInput"] { border-color: #bfcbbf; }
+div[data-testid="stButton"] > button { border-radius: 9px; border: 1px solid #d9e1d7; color: #1d4634; background: white; min-height: 3rem; text-align: left; }
+div[data-testid="stButton"] > button:hover { border-color: #b18c41; color: #193326; }
+[data-testid="stSidebar"] div[data-testid="stButton"] > button { background: #d8ad56; color: #14261d; border: 0; font-weight: 700; text-align: center; }
+.stAlert { border-radius: 9px; font-size: .88rem; }
+a { color: #176544; }

@@ -1,80 +1,16 @@
-from pathlib import Path
+"""Public legal-answer entry point used by the Streamlit UI."""
+from __future__ import annotations
 
-from src.retriever import get_retriever
-from src.prompts import RAG_PROMPT
-from src.gemini import generate_response
+from typing import Any
 
-
-# Initialize the retriever once
-retriever = get_retriever()
+from src.graph import legal_graph
+from src.state import LEGAL_DISCLAIMER
 
 
-def ask(question: str):
-    """
-    Retrieves relevant documents, builds the prompt,
-    sends it to Gemini, and appends deterministic citations.
-    """
-
-    # Retrieve relevant documents
-    docs = retriever.invoke(question)
-
-    if not docs:
-        return "I couldn't find that information in the knowledge base."
-
-    # Build context for Gemini
-    context_parts = []
-
-    # Build citations for the final answer
-    citations = []
-
-    seen = set()
-
-    for doc in docs:
-        source = doc.metadata.get("source", "Unknown")
-        page = doc.metadata.get("page", "Unknown")
-
-        path = Path(source)
-
-        department = path.parent.name if path.parent.name else "General"
-        pdf_name = path.name
-
-        context_parts.append(
-            f"""
-Department: {department}
-PDF: {pdf_name}
-Page: {page}
-
-Content:
-{doc.page_content}
-"""
-        )
-
-        citation = f"{department}: {pdf_name} - Pg. No. {page + 1}"
-
-        if citation not in seen:
-            seen.add(citation)
-            citations.append(citation)
-
-    context = "\n\n".join(context_parts)
-
-    # Create prompt
-    prompt = RAG_PROMPT.format(
-        context=context,
-        question=question
+def ask(question: str, history: list[dict[str, str]] | None = None, legal_context: dict[str, Any] | None = None) -> dict[str, Any]:
+    result = legal_graph.invoke(
+        {"question": question, "conversation_history": history or [], "prior_context": legal_context or {}}
     )
-
-    # Generate answer
-    answer = generate_response(prompt).strip()
-
-    # If Gemini couldn't answer, return immediately
-    if "couldn't find" in answer.lower():
-        return answer
-
-    # Append citations
-    if citations:
-        answer += "\n\nSources:\n"
-
-        for citation in citations:
-            answer += f"• {citation}\n"
-
-    return answer
+    result["answer"] = result.get("answer", "I could not verify this from the available legal sources.")
+    result["disclaimer"] = LEGAL_DISCLAIMER
+    return result
