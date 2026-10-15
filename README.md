@@ -1,5 +1,12 @@
 # Indian Legal Assistant
 
+## Web workspace
+
+The complete NyayaSetu React/TypeScript client and Node API are included in
+`web/`. The direct-preview entry point is `web/client/preview.html`; it
+connects to `scripts/legal_api.py` for local model-backed research intake.
+The legacy `client/preview.html` remains only as the earlier static artifact.
+
 Indian Legal Assistant is a source-grounded research tool that helps people
 understand Indian laws, rights, procedures, and official legal resources that
 may be relevant to a situation. It provides general legal information, not

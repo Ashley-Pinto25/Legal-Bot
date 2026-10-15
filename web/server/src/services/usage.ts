@@ -1,0 +1,7 @@
+import { db } from "../database/db.js";
+import { id, now } from "../utils.js";
+export function usageFor(userId:string) { return db.prepare("SELECT * FROM usage WHERE user_id=?").get(userId) as {prompts_used:number;free_prompts_used:number;paid_prompts_used:number}|undefined || {prompts_used:0,free_prompts_used:0,paid_prompts_used:0}; }
+export function hasActiveSubscription(userId:string) { return !!db.prepare("SELECT 1 FROM subscriptions WHERE user_id=? AND status='active' AND (expiry_date IS NULL OR expiry_date>?)").get(userId,now()); }
+export function assertEntitled(userId:string) { const u=usageFor(userId); return hasActiveSubscription(userId) || u.free_prompts_used < 5; }
+export function recordSuccessfulPrompt(userId:string) { const current=usageFor(userId); const paid=hasActiveSubscription(userId); db.prepare("INSERT INTO usage (user_id,prompts_used,free_prompts_used,paid_prompts_used,period) VALUES (?,?,?,?,?) ON CONFLICT(user_id) DO UPDATE SET prompts_used=excluded.prompts_used,free_prompts_used=excluded.free_prompts_used,paid_prompts_used=excluded.paid_prompts_used,period=excluded.period").run(userId,current.prompts_used+1,current.free_prompts_used+(paid?0:1),current.paid_prompts_used+(paid?1:0),now().slice(0,7)); }
+export function activateManualPlan(userId:string,plan:string) { db.prepare("INSERT INTO subscriptions VALUES (?,?,?,?,?,?,?,?)").run(id(),userId,plan,"active",now(),null,"manual",null); }

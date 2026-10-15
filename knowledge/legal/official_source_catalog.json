@@ -1,14 +1,16 @@
 {
   "purpose": "Authoritative-source expansion plan. Entries are not indexed until their official text is downloaded, audited, and accompanied by metadata.",
-  "last_reviewed": "2026-09-30",
+  "last_reviewed": "2026-10-15",
   "sources": [
-    {"name": "India Code", "scope": "Central Acts, sections, subordinate legislation and official source records", "url": "https://www.indiacode.nic.in/indiacode/home.jsp", "source_type": "official legislation portal"},
+    {"name": "India Code", "scope": "Central Acts, sections, subordinate legislation and official source records", "url": "https://indiacode.gov.in/", "source_type": "official legislation portal"},
     {"name": "Legislative Department", "scope": "Constitution and legislative publications", "url": "https://legislative.gov.in/", "source_type": "official government source"},
     {"name": "e-Gazette of India", "scope": "Gazette notifications and amendments", "url": "https://egazette.nic.in/", "source_type": "official gazette"},
     {"name": "Supreme Court of India", "scope": "Judgments and orders", "url": "https://www.sci.gov.in/", "source_type": "official court source"},
     {"name": "Supreme Court Reports", "scope": "Reported Supreme Court decisions", "url": "https://scr.sci.gov.in/scrsearch/", "source_type": "official court source"},
     {"name": "National Legal Services Authority", "scope": "Legal-aid services, State and District Legal Services Authorities", "url": "https://nalsa.gov.in/", "source_type": "official legal services source"},
-    {"name": "State legislation portals", "scope": "State Acts, rules, municipal/local instruments and State Legal Services Authorities", "url": "https://www.indiacode.nic.in/", "source_type": "state-specific official sources", "ingestion_rule": "Keep each state, effective date, status and official source separate; never present it as nationwide law."}
+    {"name": "State legislation portals", "scope": "State Acts, rules, municipal/local instruments and State Legal Services Authorities", "url": "https://www.india.gov.in/", "source_type": "state-specific official sources", "ingestion_rule": "Keep each state, effective date, status and official source separate; never present it as nationwide law."},
+    {"name": "myScheme", "scope": "Government scheme discovery and eligibility information", "url": "https://www.myscheme.gov.in/", "source_type": "official scheme discovery"},
+    {"name": "eCourts Services", "scope": "High Court and District Court case information", "url": "https://ecourts.gov.in/", "source_type": "official court discovery"}
   ],
   "priority_domains": ["Criminal Law", "Consumer Protection", "Labour & Employment", "Family Law", "Property & Land", "Cyber Law", "Constitutional Rights", "Banking & Financial", "Environmental Law", "Government Schemes / Legal Services"]
 }

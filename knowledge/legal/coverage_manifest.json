@@ -1,0 +1,13 @@
+{
+  "last_reviewed": "2026-10-15",
+  "purpose": "Transparent legal-knowledge coverage registry. A catalogue entry is not an indexed legal text or a legal conclusion.",
+  "indexing_rule": "Only official material downloaded, metadata-audited, versioned and marked current may be retrieved as a citation.",
+  "coverage": {
+    "central_legislation": { "status": "starter corpus present", "sources": ["https://indiacode.gov.in/", "https://egazette.nic.in/"] },
+    "state_and_ut_law": { "status": "36 jurisdictions catalogued; individual official connectors and audited documents still required", "jurisdiction_count": 36 },
+    "government_schemes": { "status": "official discovery catalogue configured; scheme-level eligibility must be fetched and date-verified before retrieval", "sources": ["https://www.myscheme.gov.in/", "https://www.india.gov.in/"] },
+    "case_law": { "status": "official discovery catalogue configured; judgments must be individually acquired, parsed, cited and updated before retrieval", "sources": ["https://www.sci.gov.in/", "https://scr.sci.gov.in/scrsearch/", "https://ecourts.gov.in/"] },
+    "legal_aid": { "status": "official source catalogue", "sources": ["https://nalsa.gov.in/"] }
+  },
+  "non_claim": "This project does not claim to contain all Indian laws, schemes, notifications, court cases, or state rules. These collections change frequently and must be kept jurisdiction- and date-specific."
+}
